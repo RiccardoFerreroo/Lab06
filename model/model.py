@@ -69,4 +69,23 @@ class Autonoleggio:
             :param modello: il modello dell'automobile
             :return: una lista con tutte le automobili di marca e modello indicato oppure None
         """
+        try :
+           conn = get_connection()
+           cursor = conn.cursor()
+           query = "SELECT * FROM automobile WHERE modello = %s;"
+           cursor.execute(query, ( modello,))
+
+           automobili = []
+           for row in cursor:
+               automobili.append(Automobile(row[0], row[1], row[2], row[3], row[4]))
+           cursor.close()
+           conn.close()
+           if len(automobili) == 0 :
+               return None
+           else:
+                return automobili
+        except Exception as e:
+           print(f"Errore durante lettura automobili: {e}")
+           return None
+
         # TODO
