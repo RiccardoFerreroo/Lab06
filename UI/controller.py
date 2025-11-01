@@ -28,4 +28,18 @@ class Controller:
         self._view.update()
 
     # Altre Funzioni Event Handler
+    def mostra_automobili(self,e):
+        automobili = self._model.get_automobili()
+        self._view.lista_auto.controls.clear()
+        if automobili:
+
+            for auto in automobili:
+                self._view.lista_auto.controls.append(ft.Text(f"{auto.marca} {auto.modello} ({auto.anno}) - posti {auto.posti}", size=20))
+            print("riuscita lettura")
+        else :
+            self._view.lista_auto.controls.append(ft.Text("Nessuna automobile trovata."))
+        self._view.lista_auto.update()
+
+
+
     # TODO

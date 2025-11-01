@@ -24,6 +24,7 @@ class View:
         # Elementi UI
         self.txt_titolo = None
         self.txt_responsabile = None
+        self.lista_auto = ft.ListView(expand=True, spacing=5, padding=10)
 
         # Non obbligatorio mettere già qui tutti gli elementi UI
 
@@ -63,6 +64,7 @@ class View:
         pulsante_conferma_responsabile = ft.ElevatedButton("Conferma", on_click=self.controller.conferma_responsabile)
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
+        pulsante_mostra_automobili = ft.ElevatedButton( text = "Mostra", on_click = self.controller.mostra_automobili)
         # TODO
 
         # --- LAYOUT ---
@@ -82,6 +84,11 @@ class View:
             ft.Divider(),
 
             # Sezione 3
+            ft.Row(spacing = 20 , controls=[ft.Text(value="Automobili", size=20), pulsante_mostra_automobili],
+                   alignment=ft.MainAxisAlignment.START),
+            self.lista_auto,
+
+            ft.Divider()
             # TODO
 
             # Sezione 4

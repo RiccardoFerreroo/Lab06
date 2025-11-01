@@ -1,3 +1,6 @@
+import mysql
+from mysql.connector import errorcode
+
 from database.DB_connect import get_connection
 from model.automobile import Automobile
 from model.noleggio import Noleggio
@@ -35,6 +38,28 @@ class Autonoleggio:
             Funzione che legge tutte le automobili nel database
             :return: una lista con tutte le automobili presenti oppure None
         """
+        try:
+            conn = get_connection()
+            cursor = conn.cursor()
+
+            query = "SELECT codice, marca, modello, anno,posti, disponibile FROM automobile;"
+            cursor.execute(query)
+
+            automobili = []
+            for row in cursor:
+                automobili.append(Automobile(row[0], row[1], row[2], row[3], row[4]))
+            cursor.close()
+            conn.close()
+            if len(automobili) == 0 :
+                return None
+            else:
+                return automobili
+        except Exception as e:
+            print(f"Errore durante lettura automobili: {e}")
+            return None
+
+
+
 
         # TODO
 
