@@ -98,7 +98,6 @@ class View:
             ft.Row(spacing=20, controls=[self.input_modello_auto, pulsante_cerca_automobile],
                    alignment = ft.MainAxisAlignment.START),
             self.lista_auto_ricerca,
-
             # TODO
         )
 

@@ -34,7 +34,7 @@ class Controller:
         if automobili:
 
             for auto in automobili:
-                self._view.lista_auto.controls.append(ft.Text(f"{auto.marca} {auto.modello} ({auto.anno}) - posti {auto.posti}", size=10))
+                self._view.lista_auto.controls.append(ft.Text(f"{auto.marca} {auto.modello} ({auto.anno}) - posti {auto.posti}", size=15))
 
         else :
             self._view.lista_auto.controls.append(ft.Text("Nessuna automobile trovata."))
@@ -48,11 +48,11 @@ class Controller:
         if automobili:
 
             for auto in automobili:
-                self._view.lista_auto_ricerca.controls.append(ft.Text(value=f"{auto.marca} {auto.modello} ({auto.anno}) - posti {auto.posti}", size=10))
-            print ("riuscitaaaa")
+                self._view.lista_auto_ricerca.controls.append(ft.Text(value=f"{auto.marca} {auto.modello} ({auto.anno}) - posti {auto.posti}", size=15))
+
         else:
 
-            self._view.lista_auto_ricerca.append(ft.Text("Nessuna automobile trovata."))
+            self._view.lista_auto_ricerca.controls.append(ft.Text("Nessuna automobile trovata."))
         self._view.lista_auto_ricerca.update()
 
 
